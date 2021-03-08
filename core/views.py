@@ -17,11 +17,39 @@ def CheckoutView(request):
 
 class HomeView(ListView):
     model = Item
+    paginate_by = 10
     template_name = "home.html"
+
+class SearchPageView(ListView):
+    model = Item
+    paginate_by = 10
+    template_name = "home.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        return Item.objects.filter(title__icontains=query)
+
+class OrderedPageView(ListView):
+    model = Item
+    paginate_by = 10
+    template_name = "home.html"
+
+    def get_queryset(self):
+        s = self.request.GET.get('price_filter')
+        if s=='1':
+            return Item.objects.order_by('price')
+        elif s=='2':
+            return Item.objects.order_by('-price')
+        return Item.objects.all()
+
 
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product-page.html"
+
+class ShoppingCartView(ListView):
+    model = Item
+    template_name = "cart.html"
 
 def add_to_cart(request, slug):
     item = get_object_or_404(Item,slug=slug)

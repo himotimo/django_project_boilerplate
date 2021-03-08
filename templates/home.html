@@ -7,7 +7,7 @@
         <!--Carousel Wrapper-->
         <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
 
-          <!--Indicators-->
+          <!--Carousel Indicators-->
           <ol class="carousel-indicators">
             <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-1z" data-slide-to="1"></li>
@@ -15,7 +15,7 @@
           </ol>
           <!--/.Indicators-->
 
-          <!--Slides-->
+          <!--Carousel Slides-->
           <div class="carousel-inner" role="listbox">
 
             <!--First slide-->
@@ -28,21 +28,18 @@
                   <!-- Content -->
                   <div class="text-center white-text mx-5 wow fadeIn">
                     <h1 class="mb-4">
-                      <strong>Learn Bootstrap 4 with MDB</strong>
+                      <strong>Welcome to my first Web Store!</strong>
                     </h1>
 
                     <p>
-                      <strong>Best & free guide of responsive web design</strong>
+                      <strong>Great products for display</strong>
                     </p>
 
                     <p class="mb-4 d-none d-md-block">
-                      <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                        written versions
-                        available. Create your own, stunning website.</strong>
+                      <strong>Try exploring the site!</strong>
                     </p>
 
-                    <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                      free tutorial
+                    <a target="_blank" href="https://github.com/himotimo/django_project_boilerplate" class="btn btn-outline-white btn-lg">This pages source code!
                       <i class="fas fa-graduation-cap ml-2"></i>
                     </a>
                   </div>
@@ -65,21 +62,18 @@
                   <!-- Content -->
                   <div class="text-center white-text mx-5 wow fadeIn">
                     <h1 class="mb-4">
-                      <strong>Learn Bootstrap 4 with MDB</strong>
+                      <strong>Welcome to the second carousel item!</strong>
                     </h1>
 
                     <p>
-                      <strong>Best & free guide of responsive web design</strong>
+                      <strong>Great products for display</strong>
                     </p>
 
                     <p class="mb-4 d-none d-md-block">
-                      <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                        written versions
-                        available. Create your own, stunning website.</strong>
+                      <strong>Try exploring the site!</strong>
                     </p>
 
-                    <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                      free tutorial
+                    <a target="_blank" href="https://github.com/himotimo/django_project_boilerplate" class="btn btn-outline-white btn-lg">Learn more about this site!
                       <i class="fas fa-graduation-cap ml-2"></i>
                     </a>
                   </div>
@@ -102,21 +96,18 @@
                   <!-- Content -->
                   <div class="text-center white-text mx-5 wow fadeIn">
                     <h1 class="mb-4">
-                      <strong>Learn Bootstrap 4 with MDB</strong>
+                      <strong>Welcome to the third slide!!</strong>
                     </h1>
 
                     <p>
-                      <strong>Best & free guide of responsive web design</strong>
+                      <strong>Can't believe you made it here!</strong>
                     </p>
 
                     <p class="mb-4 d-none d-md-block">
-                      <strong>The most comprehensive tutorial for the Bootstrap 4. Loved by over 500 000 users. Video and
-                        written versions
-                        available. Create your own, stunning website.</strong>
+                      <strong>Try exploring the site!</strong>
                     </p>
 
-                    <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
-                      free tutorial
+                    <a target="_blank" href="https://github.com/himotimo/django_project_boilerplate" class="btn btn-outline-white btn-lg">Go check the GITHUB page of the site!
                       <i class="fas fa-graduation-cap ml-2"></i>
                     </a>
                   </div>
@@ -132,7 +123,7 @@
           </div>
           <!--/.Slides-->
 
-          <!--Controls-->
+          <!--Carousel Controls-->
           <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -150,7 +141,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
 
         <!-- Navbar brand -->
-        <span class="navbar-brand">Categories:</span>
+        <span class="navbar-brand">Navigate:</span>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -162,7 +153,7 @@
         <div class="collapse navbar-collapse" id="basicExampleNav">
 
           <!-- Links -->
-          <ul class="navbar-nav mr-auto">
+          {% comment %}<ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#">All
                 <span class="sr-only">(current)</span>
@@ -177,15 +168,30 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Outwears</a>
             </li>
+            <li class="nav-item">
+
+            </li> {% endcomment %}
 
           </ul>
           <!-- Links -->
+          <div style= "margin:0 8px">Sort by price:</div>
 
-          <form class="form-inline">
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <form method='get' action="{% url 'core:order-results' %}" style= "margin:0 8px">
+            <div class="">
+              <button class="w3-button w3-black" type="submit" value="2" name="price_filter">&uarr;</button>
+            </div>
+            <div class="">
+              <button class="w3-button w3-teal" type="submit" value="1" name="price_filter">&darr;</button>
             </div>
           </form>
+
+          <form class="form-inline" action="{% url 'core:search-results' %}" method="get">
+            <div class="md-form my-0">
+              <input name="query" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <button type="submit" name="button">Submit</button>
+          </form>
+
         </div>
         <!-- Collapsible content -->
 

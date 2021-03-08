@@ -18,21 +18,18 @@
 
       <!-- Left -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        {% comment %}<li class="nav-item active">
           <a class="nav-link waves-effect" href="/">Home
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link waves-effect" href="/checkout" target="_blank">Checkout</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link waves-effect" href="/product">
-            Products</a>
-          </li>
+        </li>{% endcomment %}
       </ul>
 
       <!-- Right -->
       <ul class="navbar-nav nav-flex-icons">
+        {% if request.user.isauthenticated %}
         <li class="nav-item">
           <a class="nav-link waves-effect">
             <span class="badge red z-depth-1 mr-1"> 1 </span>
@@ -41,11 +38,29 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url  'account_logout'%}">
+            <span class="clearfix d-none d-sm-inline-block">Log Out</span>
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url  'account_login'%}">
+            <span class="clearfix d-none d-sm-inline-block"> Login </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" href="{% url  'account_signup'%}">
+            <span class="clearfix d-none d-sm-inline-block"> Sign Up </span>
+          </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
           <a href="https://github.com/himotimo/django_project_boilerplate" class="nav-link border border-light rounded waves-effect"
             target="_blank">
             <i class="fab fa-github mr-2"></i>Kaupan GitHub
           </a>
         </li>
+
       </ul>
 
     </div>
